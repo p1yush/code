@@ -49,9 +49,9 @@ void solve() {
          j++;
          swap(a[i], a[j]);
       }
+      for (auto it : a)
+         cout << it << " ";
    }
-   for (auto it : a)
-      cout << it << " ";
 }
 
 

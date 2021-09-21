@@ -30,28 +30,30 @@ void r_r_2() {
 
 
 void solve() {
-   int n, even = 0, odd = 0;
-   cin >> n;
-   vi(a, n);
-   fa(n, i) {
-      cin >> a[i];
-      if (a[i] % 2 == 0)
-         even++;
-      else
-         odd++;
+   int n, k, count = -1;
+   cin >> n >> k;
+   string s;
+   cin >> s;
+   fa(n, i)
+   if (s[i] != s[i + 1])
+      count++;
+   if (count >= k) {
+      for (int i = n - 1; i > 0; i--)
+         if (k % 2 == 0) {
+            if (s[0] == s[i]) {
+               cout << i + 1;
+               break;
+            }
+         }
+         else {
+            if (s[0] != s[i]) {
+               cout << i + 1;
+               break;
+            }
+         }
    }
-   if (even == 0 || odd == 0)
+   else
       cout << -1;
-   else {
-      int j = -1;
-      fa(n, i)
-      if (a[i] % 2 == 0) {
-         j++;
-         swap(a[i], a[j]);
-      }
-   }
-   for (auto it : a)
-      cout << it << " ";
 }
 
 
