@@ -30,15 +30,22 @@ void r_r_2() {
 
 
 void solve() {
-   ll n, sum2 = 0;
-   cin >> n;
-   ll sum1 = (n * (n + 1)) / 2;
-   int a[n - 1];
-   fa(n - 1, i)
-   cin >> a[i];
-   fa(n - 1, i)
-   sum2 += a[i];
-   cout << sum1 - sum2;
+   ll x, n, a;
+   cin >> x;
+   for (int i = 0; i < 30; i++) {
+      n = pow(2, i);
+      if (x < n) {
+         a = i - 1;
+         break;
+      }
+      else {
+         a = n;
+         break;
+      }
+   }
+   ll b = pow(2, a) - pow(2, a - 1);
+   ll c = x - pow(2, a);
+   cout << max(a, b);
 }
 
 
