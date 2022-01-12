@@ -24,22 +24,22 @@ void r_r_2() {
 #endif
 }
 
-int power(int a, int b) {
-   if (b == 0)
-      return 1;
-   if (b == 1)
-      return a;
-   int ans = power(a, b / 2);
-   if (b % 2 == 0)
-      return ans * ans;
-   else
-      return a * ans * ans;
+bool StringQ(string s, int i) {
+   if (i == s.length())
+      return true;
+   if (s[i] != s[s.length() - i - 1])
+      return false;
+   return StringQ(s, i + 1);
 }
 
 void solve() {
-   int a, b;
-   cin >> a >> b;
-   cout << power(a, b);
+   string s;
+   cin >> s;
+   bool x = StringQ(s, 0);
+   if (x)
+      cout << "Palindrome";
+   else
+      cout << "Not Palindrome";
 }
 
 
