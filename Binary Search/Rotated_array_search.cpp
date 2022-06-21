@@ -1,38 +1,10 @@
-#include<bits/stdc++.h>
-#include<stdlib.h>
-using namespace std;
-
-
-
-#define ll              long long
-#define pb              push_back
-#define mod             1000000007
-#define inf             1e18
-#define ps(x,y)         fixed<<setprecision(y)<<x
-#define mk(arr,n)       int *arr=new int[n];
-#define t(x)            int t; cin>>t; while(t--)
-#define fa(n)        for(int i=0; i<n; i++)
-#define fr(n)           for(int j=n-1; j<=0; j--)
-#define f(x,y)          for(int i=x; i<=y; i++)
-#define vi(v, n)        vector<long long> v(n);
-
-
-
-void r_r_2() {
-   ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
-#ifndef ONLINE_JUDGE
-   freopen("input.txt", "r", stdin);
-   freopen("output.txt", "w", stdout);
-#endif
-}
-
-int binarySearch(vector<int> a, int start, int end, int x) {
+int binarySearch(int* arr, int start, int end, int key) {
    int s = start, e = end;
    int mid = s + (e - s) / 2;
    while (s <= e) {
-      if (a[mid] == x)
+      if (arr[mid] == key)
          return mid;
-      else if (x > a[mid])
+      else if (arr[mid] < key)
          s = mid + 1;
       else
          e = mid - 1;
@@ -41,38 +13,23 @@ int binarySearch(vector<int> a, int start, int end, int x) {
    return -1;
 }
 
-
-int getPivot(vector<int> a, int n) {
+int getpivot(int* arr, int n) {
    int s = 0, e = n - 1;
    int mid = s + (e - s) / 2;
    while (s < e) {
-      if (a[mid] >= a[0])
+      if (arr[0] <= arr[mid])
          s = mid + 1;
       else
-         e = mid - 1;
+         e = mid;
       mid = s + (e - s) / 2;
    }
    return s;
 }
 
-
-void solve() {
-   int n, x;
-   cin >> n >> x;
-   vector<int> a(n);
-   for (int i = 0; i < n; i++)
-      cin >> a[i];
-   int pivot = getPivot(a, n);
-   if (x >= a[pivot] && x <= a[n - 1])
-      cout << binarySearch(a, pivot, n - 1, x);
-   else
-      cout << binarySearch(a, 0, pivot - 1, x);
-}
-
-
-int main()
-{
-   r_r_2();
-   solve();
-   return 0;
+int search(int* arr, int n, int key) {
+    int pivot = getpivot(arr, n);
+    if(key >= arr[pivot] && key <= arr[n - 1])
+        binarySearch(arr, pivot, n - 1, key);
+    else
+        binarySearch(arr, 0, pivot - 1, key);
 }
